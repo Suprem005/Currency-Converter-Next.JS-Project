@@ -1,4 +1,5 @@
 'use client';
+import { fetchCurrency } from '@/utils/fetchCurrency';
 import {
   Box,
   Button,
@@ -23,16 +24,20 @@ const Converter = () => {
   const [currencyCode, setCurrencyCode] = useState([]);
 
   // fetching currency code and setting currencyCode
+
   useEffect(() => {
     const fetchCurrencies = async () => {
-      try {
-        const res = await fetch('https://api.frankfurter.app/currencies');
-        const data = await res.json();
-        // const countryCode = Object.keys(data); //!this is for storing the country code only
-        setCurrencyCode(data);
-      } catch (error) {
-        console.log('Failed to fetch the currencies!.');
-      }
+      //   try {
+      //     const res = await fetch('https://api.frankfurter.app/currencies');
+      //     const data = await res.json();
+      //     // const countryCode = Object.keys(data); //!this is for storing the country code only
+      //     setCurrencyCode(data);
+      //   } catch (error) {
+      //     console.log('Failed to fetch the currencies!.');
+      //   }
+      const data = await fetchCurrency();
+      console.log(data);
+      setCurrencyCode(data);
     };
     fetchCurrencies();
   }, []);

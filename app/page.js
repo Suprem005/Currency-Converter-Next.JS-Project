@@ -1,5 +1,3 @@
-import Converter from './converter/page';
-import Currency from './currency/page';
 import Dashboard from './dashboard/page';
 
 const Hello = () => {
