@@ -17,9 +17,6 @@ import { Formik } from 'formik';
 import { useEffect, useState } from 'react';
 
 const Converter = () => {
-  const [baseCurrency, setBaseCurrency] = useState('');
-  const [targetCurrency, setTargetCurrency] = useState('');
-  const [Amount, setAmount] = useState(null);
   const [convertCurrency, setConvertCurrency] = useState(null);
   const [currencyCode, setCurrencyCode] = useState([]);
 
@@ -27,14 +24,6 @@ const Converter = () => {
 
   useEffect(() => {
     const fetchCurrencies = async () => {
-      //   try {
-      //     const res = await fetch('https://api.frankfurter.app/currencies');
-      //     const data = await res.json();
-      //     // const countryCode = Object.keys(data); //!this is for storing the country code only
-      //     setCurrencyCode(data);
-      //   } catch (error) {
-      //     console.log('Failed to fetch the currencies!.');
-      //   }
       const data = await fetchCurrency();
       console.log(data);
       setCurrencyCode(data);

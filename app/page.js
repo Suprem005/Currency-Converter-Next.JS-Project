@@ -1,4 +1,5 @@
-import Dashboard from './dashboard/page';
+'use client';
+import Home from './home/page';
 
 const Hello = () => {
   return (
@@ -11,7 +12,7 @@ const Hello = () => {
     // </div>
     <div>
       {/* <Dashboard /> */}
-      <Dashboard />
+      <Home />
     </div>
   );
 };
