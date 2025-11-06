@@ -51,7 +51,7 @@ const History = () => {
           <Button
             variant='text'
             onClick={() => {
-              router.push('/dashboard');
+              router.push('/');
             }}
           >
             Home

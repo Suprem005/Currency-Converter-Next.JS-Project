@@ -28,10 +28,9 @@ const CurrencyTrendChart = ({
         const start = startDate || '2023-01-01';
         // //* returns string of date and time and splits date and time and store it in array as a pair and [0] takes the first pair(i.e date) of split result
         const end = endDate || new Date().toISOString().split('T')[0];
-        const res = await $axios.get(
+        const { data } = await $axios.get(
           `/${start}..${end}?from=${base}&to=${target}`
-        );
-        const { data } = await res;
+        ); //!edited
 
         // * as chart data takes data: [{date:'2000-01-01', rate: 1.05},{..}]
         const formatData = Object.entries(data.rates).map(([date, rate]) => ({
@@ -50,25 +49,29 @@ const CurrencyTrendChart = ({
   //*     rendering chart
 
   return (
-    <div>
-      <ResponsiveContainer width='100%' height={400}>
-        <AreaChart
-          data={data}
-          style={{ maxWidth: '0.9', maxHeight: '70vh', aspectRatio: 1.618 }}
-          margin={{ top: 20, right: 0, left: 0, bottom: 0 }}
-        >
-          <CartesianGrid strokeDasharray='3 3' />
-          <XAxis dataKey='date' fontSize={10} />
-          <YAxis width='auto' />
-          <Tooltip />
-          <Area
-            type='monotone'
-            dataKey='rate'
-            stroke='#8884d8'
-            fill='#8884d8'
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+    <div className='m-9'>
+      {data.length > 0 ? (
+        <ResponsiveContainer width='100%' height={400}>
+          <AreaChart
+            data={data}
+            style={{ maxWidth: '0.9', maxHeight: '70vh', aspectRatio: 1.618 }}
+            margin={{ top: 20, right: 0, left: 0, bottom: 0 }}
+          >
+            <CartesianGrid strokeDasharray='3 3' />
+            <XAxis dataKey='date' fontSize={10} />
+            <YAxis width='auto' />
+            <Tooltip />
+            <Area
+              type='monotone'
+              dataKey='rate'
+              stroke='#8884d8'
+              fill='#8884d8'
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      ) : (
+        <p>No data available for selected range.</p>
+      )}
     </div>
   );
 };

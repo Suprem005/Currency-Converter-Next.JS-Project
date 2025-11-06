@@ -7,11 +7,10 @@ const Home = () => {
   const router = useRouter();
   return (
     <div>
-      <Box className='flex flex-wrap flex-col p-6 gap-8'>
-        <div className='flex flex-row justify-between'>
-          <Typography fontFamily={'monospace'} variant='h1'>
-            CurVert:)
-          </Typography>
+      <Box className='flex flex-wrap flex-col p-4 gap-8'>
+        <div className='flex flex-row justify-between p-3 rounded-2xl'>
+          <p className='text-8xl font-sans'>CurVert:)</p>
+
           <ButtonGroup className='flex justify-end'>
             <Button
               variant='text'

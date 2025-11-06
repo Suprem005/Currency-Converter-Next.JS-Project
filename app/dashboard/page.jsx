@@ -1,29 +1,22 @@
 'use client';
+import CurrencyTrendChart from '@/components/CurrencyTrendChart';
+import { fetchCurrency } from '@/utils/fetchCurrency';
 import {
   Button,
-  ButtonGroup,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
-  TextField,
-  Typography,
 } from '@mui/material';
-import { Box, flex } from '@mui/system';
-import React, { useEffect, useState } from 'react';
-import HistoryIcon from '@mui/icons-material/History';
-import { useRouter } from 'next/navigation';
-import axios from 'axios';
-import $axios from '@/lib/axios.instance';
-import CurrencyTrendChart from '@/components/CurrencyTrendChart';
-import { fetchCurrency } from '@/utils/fetchCurrency';
-import { Formik } from 'formik';
+import { Box } from '@mui/system';
 import { DateField, LocalizationProvider } from '@mui/x-date-pickers';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { useMutation } from '@tanstack/react-query';
-import Hello from '../page';
+import dayjs from 'dayjs';
+import { Formik } from 'formik';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const Dashboard = () => {
   //* Setting states: done
@@ -81,7 +74,7 @@ const Dashboard = () => {
         >
           {(formik) => {
             return (
-              <Box className='flex flex-wrap flex-col m-8'>
+              <Box className='flex flex-wrap flex-col m-4 p-4 rounded-3xl'>
                 <div>
                   <p className='flex flex-col  text-2xl pb-3'>
                     Currency Exchange Rate Analysis
